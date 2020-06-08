@@ -1,10 +1,9 @@
 import React,{Component} from 'react';
-import '../App.css';
+
 
 import SumDzial from './SumDzial';
-import SearchSection from './SearchSection';
 import SearchEmployee from './SearchEmployee';
-import ViewEmployees from './ViewEmployees';
+
 class App extends Component{
 
   state = { 
@@ -21,10 +20,6 @@ class App extends Component{
       wynagrodzenieKwota: '',
       wynagrodzenieWaluta : '',}
 
-
-  
-
- 
   handleAddNewEmp = ()=>{
     let employees = [...this.state.employees]
     employees.push({
@@ -47,28 +42,28 @@ class App extends Component{
 
   handleAddInfo = (e)=>{
  
-    if(e.target.name === "imie" && e.target.value !== ''){
+    if(e.target.name === "imie"){
       
       this.setState({
         imie : e.target.value
       })
     }
-    if(e.target.name === "nazwisko" && e.target.value !== ''){
+    if(e.target.name === "nazwisko"){
       this.setState({
         nazwisko : e.target.value
       })
     }
-    if(e.target.name === "dzial" && e.target.value !== ''){
+    if(e.target.name === "dzial"){
       this.setState({
         dzial : e.target.value
       })
     }
-    if(e.target.name === "wynagrodzenie" && e.target.value !== ''){
+    if(e.target.name === "wynagrodzenie"){
       this.setState({
         wynagrodzenieKwota : e.target.value
       })
     }
-    if(e.target.name === "waluta" && e.target.value !== ''){
+    if(e.target.name === "waluta"){
       this.setState({
         wynagrodzenieWaluta : e.target.value
       })
@@ -76,33 +71,29 @@ class App extends Component{
   }
 
   render(){
-   // const tab = this.state.employees.map(employee=> <ViewEmployees {...employee} />)
     const newEmp = [...this.state.employees]
-    let sum=0
-    this.state.employees.map(item => sum = (1*item.wynagrodzenieKwota) +sum)
-    
       
     return(
       <>
-          <div>
-               <input onChange={this.handleAddInfo} value={this.state.imie} placeholder="Podaj imię..." type="text" name="imie"/><br/>
-               <input onChange={this.handleAddInfo} value={this.state.nazwisko} placeholder="Podaj nazwisko..." type="text" name="nazwisko"/><br/>
-               <input onChange={this.handleAddInfo} value={this.state.dzial} placeholder="Podaj dział..." type="text" name="dzial"/><br/>
-               <input onChange={this.handleAddInfo} value={this.state.wynagrodzenieKwota} placeholder="Podaj wynagrodzenie..." type="number" name="wynagrodzenie"/><br/>
-               <input onChange={this.handleAddInfo} value={this.state.wynagrodzenieWaluta} placeholder="Podaj walutę..." type="text" name="waluta"/><br/>
-               <button onClick={this.handleAddNewEmp}>Dodaj pracownika</button>
+      <div class="jumbotron row justify-content-center">
+              <h2>Zadanie rekrutacyjne</h2>
+            </div>
+          <div class="jumbotron">      
+            <div class=" row input-group col-md-12">
+               <input class="form-control" onChange={this.handleAddInfo} value={this.state.imie} placeholder="Podaj imię..." type="text" name="imie"/><br/>
+               <input  class="form-control" onChange={this.handleAddInfo} value={this.state.nazwisko} placeholder="Podaj nazwisko..." type="text" name="nazwisko"/><br/>
+               <input class="form-control" onChange={this.handleAddInfo} value={this.state.dzial} placeholder="Podaj dział..." type="text" name="dzial"/><br/>
+               <input class="form-control" onChange={this.handleAddInfo} value={this.state.wynagrodzenieKwota} placeholder="Podaj wynagrodzenie..." type="text" pattern="[0-9.]+" name="wynagrodzenie"/><br/>
+               <input class="form-control" onChange={this.handleAddInfo} value={this.state.wynagrodzenieWaluta} placeholder="Podaj walutę..." type="text" name="waluta"/><br/>
+               <button type="button" class="btn btn-outline-info" onClick={this.handleAddNewEmp}>Dodaj pracownika</button>
+               </div>
            </div>
            <div>
-          
-        <SearchEmployee items={newEmp}/> 
-        
-        </div>
-        
-        <div>
-             Suma wszystkich wynagrodzeń: {sum} <br/>
-             <SumDzial data={newEmp}/>
-        </div><br/>
-        
+          <SearchEmployee items={newEmp}/>  
+          </div>  
+        <div class="jumbotron">
+            <SumDzial data={newEmp}/>
+        </div>  
       </>
     )
   }

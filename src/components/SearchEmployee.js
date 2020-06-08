@@ -1,5 +1,4 @@
 import React from 'react'
-import EmployeesContainer from './EmployeesContainer';
 import ViewEmployees from './ViewEmployees';
 
 class SearchEmployee extends React.Component{
@@ -125,15 +124,9 @@ class SearchEmployee extends React.Component{
     sectionEmployees = ()=>{
         
         this.props.items.forEach(section => {
-            // console.log('sekcja '+section.dzial)
-
             if (!this.state.checkboxes.find(item => item.dzial === section.dzial)) {
                 this.state.checkboxes.push({dzial: section.dzial, isChecked: false});
             }
-
-            // if (section.dzial && !this.state.checkboxes.includes(section.dzial)) {
-            //     this.state.checkboxes.push({dzial: section.dzial, isChecked: false})
-            // }
         })
       
         return this.state.checkboxes.map(section => <div>{section.dzial} <input type="checkbox" onChange={this.handleChecked} name={section.dzial}/></div> )
@@ -142,14 +135,37 @@ class SearchEmployee extends React.Component{
     render(){
 
         return(
-           <>
-            <input type="text" placeholder="Search" onChange={this.handleOnChange} value={this.state.value}/>
-            {this.sectionEmployees()}
-            Od: <input value={this.state.valueOd} onChange={this.handleRangeOd} placeholder="Kwota od..." type="number" name="od"/> 
-            Do: <input value={this.state.valueDo} onChange={this.handleRangeDo} placeholder="Kwota do..." type="number" name="do"/>
+            <>
+            <div class="">
+            <div class=" row justify-content-center">
+                
+            <div class="col-4">
+                <ul class="list-group">
+                    <li class="list-group-item active">Wyszukaj po imieniu:</li>
+                    <li class="list-group-item"><input type="text" placeholder="Wpisz imię..." onChange={this.handleOnChange} value={this.state.value}/></li>
+                </ul>      
+            </div>
+            <div class="col-4">
+                    <ul class="list-group">
+                        <li class="list-group-item active">Wyszukaj po dziale:</li>
+                        <li class="list-group-item">{this.sectionEmployees()}</li>
+                    </ul> 
+            </div>
+                <div class="col-4">
+                    <ul class="list-group">
+                        <li class="list-group-item active">Wyszukaj po kwocie:</li>
+                        <li class="list-group-item"><input value={this.state.valueOd} onChange={this.handleRangeOd} placeholder="Kwota od..." type="text" name="od"/>
+                        <input value={this.state.valueDo} onChange={this.handleRangeDo} placeholder="Kwota do..." type="text" name="do"/></li>
+                    </ul> 
+                </div>
+            </div>
+            </div>
+            
+            <div class="jumbotron">
             <ViewEmployees names={this.dynamicSearch()}/>
-            <br/>
-           </>
+            </div>
+            </>
+          
         )
     }
     

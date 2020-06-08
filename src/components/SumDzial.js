@@ -4,24 +4,24 @@ const SumDzial = (props)=>{
 
 
     let newTab = [...props.data]
- 
-    //newTab.forEach(item => {if (item.dzial && !tab.includes(item.dzial)) tab.push(item.dzial)})
-    const departments = [];
+    let sum=0
+    newTab.map(item => sum = (1*item.wynagrodzenieKwota) +sum)
+    const dzialy = [];
 
     newTab.map(employee => {
-    if (!departments.find(item => item.dzial === employee.dzial)) {
-    departments.push({dzial: employee.dzial, suma: 0});
+    if (!dzialy.find(item => item.dzial === employee.dzial)) {
+    dzialy.push({dzial: employee.dzial, suma: 0});
     }
-    const existingDepartment = departments.find(item => item.dzial === employee.dzial);
-  
-     existingDepartment.suma = employee.wynagrodzenieKwota*1 + existingDepartment.suma*1 ;
+    const istniejaceDzialy = dzialy.find(item => item.dzial === employee.dzial);
+    istniejaceDzialy.suma = employee.wynagrodzenieKwota*1 + istniejaceDzialy.suma*1 ;
      
     });
 
     return(
-        <>
-        {departments.map(item => <div>{item.dzial} {item.suma} </div>)}
-        </>   
+        <div>
+        Suma całkowita wszystkich wynagrodzeń:{sum}
+        {dzialy.map(item => <div>{item.dzial} {item.suma} </div>)}
+        </div>   
     )
 }
 
