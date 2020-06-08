@@ -20,7 +20,10 @@ class App extends Component{
       wynagrodzenieKwota: '',
       wynagrodzenieWaluta : '',}
 
-  handleAddNewEmp = ()=>{
+  handleAddNewEmp = (e)=>{
+
+    e.preventDefault();
+    
     let employees = [...this.state.employees]
     employees.push({
       imie: this.state.imie,
@@ -29,13 +32,16 @@ class App extends Component{
       wynagrodzenieKwota: this.state.wynagrodzenieKwota,
       wynagrodzenieWaluta : this.state.wynagrodzenieWaluta,
     })
+
+    this.refs.form.reset();
+
     this.setState({
       employees,
-      imie:'',
-      nazwisko:'',
-      dzial: '',
-      wynagrodzenieKwota: '',
-      wynagrodzenieWaluta : '',
+      // imie:'',
+      // nazwisko:'',
+      // dzial: '',
+      // wynagrodzenieKwota: '',
+      // wynagrodzenieWaluta : '',
     })
     
   }
@@ -79,14 +85,16 @@ class App extends Component{
               <h2>Zadanie rekrutacyjne</h2>
             </div>
           <div class="jumbotron">      
-            <div class=" row input-group col-md-12">
-               <input class="form-control" onChange={this.handleAddInfo} value={this.state.imie} placeholder="Podaj imię..." type="text" name="imie"/><br/>
-               <input  class="form-control" onChange={this.handleAddInfo} value={this.state.nazwisko} placeholder="Podaj nazwisko..." type="text" name="nazwisko"/><br/>
-               <input class="form-control" onChange={this.handleAddInfo} value={this.state.dzial} placeholder="Podaj dział..." type="text" name="dzial"/><br/>
-               <input class="form-control" onChange={this.handleAddInfo} value={this.state.wynagrodzenieKwota} placeholder="Podaj wynagrodzenie..." type="text" pattern="[0-9.]+" name="wynagrodzenie"/><br/>
-               <input class="form-control" onChange={this.handleAddInfo} value={this.state.wynagrodzenieWaluta} placeholder="Podaj walutę..." type="text" name="waluta"/><br/>
-               <button type="button" class="btn btn-outline-info" onClick={this.handleAddNewEmp}>Dodaj pracownika</button>
+            <form  class="row form-group col-md-12" onSubmit={this.handleAddNewEmp} ref="form">
+              <div class="input-group">
+               <input class="form-control" onChange={this.handleAddInfo} value={this.state.imie} placeholder="Podaj imię..." type="text" name="imie" required/>
+               <input  class="form-control" onChange={this.handleAddInfo} value={this.state.nazwisko} placeholder="Podaj nazwisko..." type="text" name="nazwisko" required/>
+               <input class="form-control" onChange={this.handleAddInfo} value={this.state.dzial} placeholder="Podaj dział..." type="text" name="dzial" required/>
+               <input class="form-control" onChange={this.handleAddInfo} value={this.state.wynagrodzenieKwota} placeholder="Podaj wynagrodzenie..." type="text" pattern="[0-9.]+" name="wynagrodzenie" required/>
+               <input class="form-control" onChange={this.handleAddInfo} value={this.state.wynagrodzenieWaluta} placeholder="Podaj walutę..." type="text" name="waluta" required/>
+               <button type="submit" class="btn btn-outline-info" >Dodaj pracownika</button>
                </div>
+               </form>
            </div>
            <div>
           <SearchEmployee items={newEmp}/>  
