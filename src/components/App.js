@@ -37,11 +37,11 @@ class App extends Component{
 
     this.setState({
       employees,
-      // imie:'',
-      // nazwisko:'',
-      // dzial: '',
-      // wynagrodzenieKwota: '',
-      // wynagrodzenieWaluta : '',
+      imie: undefined,
+      nazwisko:undefined,
+      dzial: undefined,
+      wynagrodzenieKwota: undefined,
+      wynagrodzenieWaluta : undefined,
     })
     
   }

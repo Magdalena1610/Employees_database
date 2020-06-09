@@ -16,9 +16,9 @@ const ViewEmployees = (props)=>{
     )
     
     return(
-        <>
-        <table class="table">
-            <thead>
+        <div class="table-responsive rounded">
+        <table class="table table-bordered table-striped ">
+            <thead class="p-3 mb-2 bg-info text-white rounded-lg">
                 <tr>
                     <th scope="col">Imię</th>
                     <th scope="col">Nazwisko</th>
@@ -30,7 +30,7 @@ const ViewEmployees = (props)=>{
                 {tab}
             </tbody>
         </table> 
-        </>
+        </div>
     )
 }
 
