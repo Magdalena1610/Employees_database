@@ -1,5 +1,6 @@
 import React from 'react';
 import '../ViewEmployees.css';
+import SumDzial from './SumDzial'
 
 
 
@@ -16,6 +17,7 @@ const ViewEmployees = (props)=>{
     )
     
     return(
+        <>
         <div class="table-responsive rounded">
         <table class="table table-bordered table-striped ">
             <thead class="p-3 mb-2 bg-info text-white rounded-lg">
@@ -31,6 +33,8 @@ const ViewEmployees = (props)=>{
             </tbody>
         </table> 
         </div>
+        <SumDzial data={props.names}/>
+        </>
     )
 }
 

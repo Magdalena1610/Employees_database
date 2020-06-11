@@ -1,6 +1,7 @@
 import React from 'react'
 import ViewEmployees from './ViewEmployees';
 
+
 class SearchEmployee extends React.Component{
 
     state ={
@@ -161,8 +162,8 @@ class SearchEmployee extends React.Component{
             </div>
             </div>
             
-            <div class="jumbotron">
-            <ViewEmployees names={this.dynamicSearch()}/>
+            <div>
+            <ViewEmployees names={this.dynamicSearch()}/>           
             </div>
             </>
           
