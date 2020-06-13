@@ -137,34 +137,29 @@ class SearchEmployee extends React.Component{
 
         return(
             <>
-            <div class="">
-            <div class=" row justify-content-center">
+            <div class="row justify-content-center" style={{paddingBottom: '10px'}}>
                 
             <div class="col-4">
                 <ul class="list-group">
-                    <li class="list-group-item p-3 mb-2 bg-info text-white">Wyszukaj po imieniu:</li>
+                    <li class="list-group-item p-3 mb-2 bg-dark text-white">Wyszukaj po imieniu:</li>
                     <li class="list-group-item"><input type="text" placeholder="Wpisz imię..." onChange={this.handleOnChange} value={this.state.value}/></li>
                 </ul>      
             </div>
             <div class="col-4 ">
                     <ul class="list-group">
-                        <li class="list-group-item p-3 mb-2 bg-info text-white">Wyszukaj po dziale:</li>
+                        <li class="list-group-item p-3 mb-2 bg-dark text-white">Wyszukaj po dziale:</li>
                         <li class="list-group-item">{this.sectionEmployees()}</li>
                     </ul> 
             </div>
-                <div class="col-4">
+                <div class="col-4" >
                     <ul class="list-group">
-                        <li class="list-group-item p-3 mb-2 bg-info text-white">Wyszukaj po kwocie:</li>
+                        <li class="list-group-item p-3 mb-2 bg-dark text-white">Wyszukaj po kwocie:</li>
                         <li class="list-group-item"><input value={this.state.valueOd} onChange={this.handleRangeOd} placeholder="Kwota od..." type="text" name="od"/>
                         <input value={this.state.valueDo} onChange={this.handleRangeDo} placeholder="Kwota do..." type="text" name="do"/></li>
                     </ul> 
                 </div>
-            </div>
-            </div>
-            
-            <div>
-            <ViewEmployees names={this.dynamicSearch()}/>           
-            </div>
+            </div>         
+            <ViewEmployees names={this.dynamicSearch()}/> 
             </>
           
         )

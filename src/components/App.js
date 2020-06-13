@@ -34,17 +34,11 @@ class App extends Component{
 
  
   render(){
-    const newEmp = [...this.state.employees]
-      
+    const newEmp = [...this.state.employees]  
     return(
-      <>
-      <div class="jumbotron row justify-content-center">
-              <h2>Zadanie rekrutacyjne</h2>
-            </div>
+      <>          
             <AddEmployee add={this.addEmployee}/>
-           <div>
-            <SearchEmployee items={newEmp}/>  
-          </div> 
+            <SearchEmployee items={newEmp}/>    
       </>
     )
   }

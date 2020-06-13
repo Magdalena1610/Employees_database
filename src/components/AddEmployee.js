@@ -51,19 +51,17 @@ class AddEmployee extends Component{
     
     render(){
         return(
-            <>
-            <div>      
-            <form  class="row form-group col-md-12" onSubmit={this.handleAddNewEmp} ref="form">
+            <div class="row justify-content-center" style={{paddingBottom: '10px', paddingTop: '20px'}}>      
+            <form  class="form-group col-12" onSubmit={this.handleAddNewEmp} ref="form">
               <div class="input-group">
                <input class="form-control" onChange={this.handleAddInfo} value={this.state.imie} placeholder="Podaj imię..." type="text" name="imie" />
                <input  class="form-control" onChange={this.handleAddInfo} value={this.state.nazwisko} placeholder="Podaj nazwisko..." type="text" name="nazwisko" required/>
                <input class="form-control" onChange={this.handleAddInfo} value={this.state.dzial} placeholder="Podaj dział..." type="text" name="dzial" required/>
                <input class="form-control" onChange={this.handleAddInfo} value={this.state.wynagrodzenieKwota} placeholder="Podaj wynagrodzenie..." type="text" pattern="[0-9.]+" name="wynagrodzenie" required/>
-               <button type="submit" class="btn btn-outline-info" >Dodaj pracownika</button>
+               <button type="submit" class="btn btn-outline-dark" >Dodaj pracownika</button>
                </div>
                </form>
            </div>
-            </>
         )
     }
 }

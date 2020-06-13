@@ -31,9 +31,9 @@ const SumDzial = (props)=>{
 
     return(
         <>
-        <div>
+        <div style={{paddingBottom: '20px', paddingTop: '10px'}}>
             <table class="table table-bordered table-striped ">
-            <thead class="p-3 mb-2 bg-info text-white rounded-lg">
+            <thead class="p-3 mb-2 bg-dark text-white">
                 <tr>
                     <th scope="mb-3">Suma wszystkich wynagrodzeń:</th>
                     <th scope="col">Suma względem działu:</th>
